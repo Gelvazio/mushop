@@ -1,0 +1,85 @@
+
+<ul mu-class="{'uk-navbar-nav': '!offcanvas', 'uk-nav uk-nav-default': 'offcanvas', 'mu-user-toolbar-inline': 'inline'}">
+  <li class="uk-visible@m" mu-if="profile"><a href="personal.html" mu-route>{{profile.firstName}} {{profile.lastName}}</a></li>
+  <li mu-if="profile"><a mu onclick="this.mu.user.logout(); return false;">Logout</a></li>
+  <li mu-if="!profile"><a uk-toggle="target: #auth-modal-{{ctxId}}">Login/Register</a></li>
+</ul>
+<div mu-if="!profile">
+  <div id="auth-modal-{{ctxId}}" uk-modal mu-uk-component="ui.modal">
+    <div class="uk-modal-dialog uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <ul uk-tab>
+        <li><a>Login</a></li>
+        <li mu-class="{'uk-active':'register'}"><a>Create Account</a></li>
+      </ul>
+      <ul class="uk-switcher uk-margin">
+        <li>
+          <form class="uk-form-stacked" mu-form="form.auth">
+            <fieldset class="uk-fieldset">
+              <div class="uk-grid uk-grid-small">
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label" for="username">Username</label>
+                  <div class="uk-inline uk-width-expand"><span class="uk-form-icon" uk-icon="user"></span>
+                    <input class="uk-input" name="username" type="text" autofocus mu-attr mu-attr-value="fields.username">
+                  </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label" for="password">Password</label>
+                  <div class="uk-inline uk-width-expand"><span class="uk-form-icon" uk-icon="lock"></span>
+                    <input class="uk-input" name="password" type="password">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <hr class="uk-divider-icon">
+            <div class="uk-text-right"><span class="uk-text-warning uk-margin-small-right" hidden mu-hide="!error.auth"><span class="uk-margin-small-right" uk-icon="warning"></span><span mu-html="error.auth"></span></span>
+              <div uk-spinner mu-hide="!loading"></div>
+              <button class="uk-button uk-button-primary" type="submit" mu-attr mu-attr-disabled="loading"><span class="uk-margin-xsmall-right" uk-icon="icon: sign-in; ratio: ratio: .75;"></span>Sign In
+              </button>
+            </div>
+          </form>
+        </li>
+        <li>
+          <form class="uk-form-stacked" mu-form="form.reg">
+            <fieldset class="uk-fieldset">
+              <div class="uk-grid uk-grid-small">
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label uk-form-label-required" for="firstName">First Name</label>
+                  <input class="uk-input" required name="firstName" type="text" placeholder="One" autofocus mu-attr mu-attr-value="fields.firstName">
+                </div>
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label uk-form-label-required" for="lastName">Last Name</label>
+                  <input class="uk-input" required name="lastName" type="text" placeholder="Cool Cat" mu-attr mu-attr-value="fields.lastName">
+                </div>
+                <div class="uk-margin uk-width-1-1@s">
+                  <label class="uk-form-label uk-form-label-required" for="email">Email</label>
+                  <div class="uk-inline uk-width-expand"><span class="uk-form-icon" uk-icon="mail"></span>
+                    <input class="uk-input" required name="email" placeholder="user@example.com" mu-attr mu-attr-value="fields.email">
+                  </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label" for="username">Username</label>
+                  <div class="uk-inline uk-width-expand"><span class="uk-form-icon" uk-icon="user"></span>
+                    <input class="uk-input" required name="username" type="text" mu-attr mu-attr-value="fields.username">
+                  </div>
+                </div>
+                <div class="uk-width-1-2@s">
+                  <label class="uk-form-label" for="password">Password</label>
+                  <div class="uk-inline uk-width-expand"><span class="uk-form-icon" uk-icon="lock"></span>
+                    <input class="uk-input" required name="password" type="password">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <hr class="uk-divider-icon">
+            <div class="uk-text-right"><span class="uk-text-warning uk-margin-small-right" hidden mu-hide="!error.reg"><span class="uk-margin-small-right" uk-icon="warning"></span><span mu-html="error.reg"></span></span>
+              <div uk-spinner mu-hide="!loading"></div>
+              <button class="uk-button uk-button-primary" type="submit" mu-attr mu-attr-disabled="loading"><span class="uk-margin-xsmall-right" uk-icon="icon: sign-in; ratio: ratio: .75;"></span>Register
+              </button>
+            </div>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

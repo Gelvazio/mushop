@@ -1,0 +1,49 @@
+
+<aside class="uk-offcanvas-bar uk-padding-remove">
+  <div class="uk-card uk-card-default uk-card-small uk-height-1-1 uk-flex uk-flex-column tm-shadow-remove">
+    <header class="uk-card-header uk-flex uk-flex-middle">
+      <div class="uk-grid-small uk-flex-1" uk-grid>
+        <div class="uk-width-expand">
+          <div class="uk-h3">Cart</div>
+        </div>
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+      </div>
+    </header>
+    <div class="uk-card-body uk-overflow-auto">
+      <div class="uk-text-warning uk-text-center" mu-if="!items.length"><span class="uk-margin-small-right" uk-icon="ban"></span><span>There are no items in your cart</span>
+      </div>
+      <ul class="uk-list uk-list-divider" mu-if="items.length">
+        <li class="uk-visible-toggle" mu-each="items" mu-each-as="row">
+          <article class="uk-position-relative"><a class="uk-icon-link uk-text-warning uk-invisible-hover uk-position-top-right" mu-click="row.actions.remove" uk-icon="icon: close; ratio: 1" uk-tooltip="Remove"></a>
+            <div class="uk-grid-small" uk-grid>
+              <div class="uk-width-1-4">
+                <div class="tm-ratio tm-ratio-4-3"><a class="tm-media-box" mu-attr mu-attr-href="row.product.href" mu-route>
+                    <figure class="tm-media-box-wrap"><img mu-if="row.product.image" mu-attr mu-attr-src="row.product.image" mu-attr-alt="row.product.name"><span mu-if="!row.product.image"><span class="uk-text-muted" uk-icon="icon: image; ratio: 4;"></span></span></figure></a></div>
+              </div>
+              <div class="uk-width-expand"><a class="uk-link-heading uk-text-small" mu-attr mu-attr-href="row.product.href" mu-route><span mu-html="row.product.name"></span></a>
+                <div class="uk-margin-xsmall uk-grid-small uk-flex-middle" uk-grid>
+                  <div class="uk-text-meta uk-text-xsmall uk-width-expand"><span mu-html="row.item.quantity"></span> × $<span mu-html="row.item.rowUnitPrice"></span>
+                  </div>
+                  <div class="uk-text-bolder uk-text-small">$<span mu-html="row.item.rowTotalPrice"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <footer class="uk-card-footer">
+      <div class="uk-grid-small" uk-grid>     
+        <div class="uk-width-expand uk-text-muted uk-h4">Subtotal</div>
+        <div class="uk-h4 uk-text-bolder">$<span mu-html="totals.subtotal"></span>
+        </div>
+      </div>
+      <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m uk-margin-small" uk-grid>
+        <div class="uk-width-1-1" mu-if="!items.length"><a class="uk-button uk-button-primary uk-margin-small uk-width-1-1" href="catalog.html" mu-route>Shop Products</a></div>
+        <div mu-if="items.length"><a class="uk-button uk-button-default uk-margin-small uk-width-1-1" href="cart.html" mu-route>view cart</a></div>
+        <div mu-if="items.length"><a class="uk-button uk-button-primary uk-margin-small uk-width-1-1" href="checkout.html" mu-route>checkout</a></div>
+      </div>
+    </footer>
+  </div>
+</aside>

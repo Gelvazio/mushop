@@ -1,0 +1,17 @@
+
+<section class="uk-section uk-section-small">
+  <div class="uk-container">
+    <div class="uk-text-center">
+      <div mu-if="!profile">
+        <h1 class="uk-heading-hero">¯\_(ツ)_/¯</h1>
+        <div class="uk-text-lead" mu-if="!profile">Please login or register to continue</div>
+      </div>
+      <div mu-if="profile">
+        <h1 class="uk-heading-hero">You're here, yay!</h1>
+      </div>
+      <div class="uk-flex-center" uk-grid>
+        <div mu-user-toolbar inline="true"></div>
+      </div>
+    </div>
+  </div>
+</section>

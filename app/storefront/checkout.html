@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+Copyright © 2019, Oracle and/or its affiliates. All rights reserved.
+The Universal Permissive License (UPL), Version 1.0
+--><!-- BUILD: -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,500">
+    <link rel="stylesheet" href="styles/uikit-a5125b8dee.css">
+    <link rel="stylesheet" href="styles/shop-374d802681.css">
+    <script src="scripts/uikit-573c427531.js"></script>
+  </head>
+  <body>
+    <div class="uk-offcanvas-content" id="app">
+      <header>
+        <div class="uk-navbar-container tm-navbar-container">
+          <div class="uk-container" uk-navbar>
+            <div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="index.html" mu-route><img src="images/logo.png" alt="μShop"></a></div>
+            <div class="uk-navbar-right"><a class="uk-navbar-item uk-link-muted" href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: receiver; ratio: .75;"></span><span class="tm-pseudo">+1 800.392.2999</span></a></div>
+          </div>
+        </div>
+      </header>
+      <main class="short-footer">
+        <section class="uk-section uk-section-small">
+          <div class="uk-container">
+            <div class="uk-grid-medium uk-child-width-1-1" uk-grid>
+              <section class="uk-text-center"><a class="uk-link-muted uk-text-small" href="cart.html" mu-route><span class="uk-margin-xsmall-right" uk-icon="icon: arrow-left; ratio: .75;"></span>Return to cart</a>
+                <h1 class="uk-margin-small-top uk-margin-remove-bottom">Checkout</h1>
+              </section>
+              <section>
+                <div mu-checkout mu-cloak>
+                  <div class="uk-grid-medium" uk-grid>
+                    <div class="uk-width-1-1 tm-checkout uk-width-expand@m">
+                      <div class="uk-text-center uk-width-expand" mu-hide="!submitting"><span uk-spinner></span> Creating Order...</div>
+                      <div class="uk-grid-medium uk-child-width-1-1" uk-grid mu-hide="submitting">
+                        <div class="uk-text-warning uk-text-center uk-padding-small" mu-if="error"><span class="uk-margin-small-right" uk-icon="warning"></span><span mu-html="error"></span>
+                        </div>
+                        <section>
+                          <form class="uk-form-stacked" mu-form="form.contact">
+                            <h2 class="tm-checkout-title">Contact Information</h2>
+                            <div class="uk-card uk-card-default uk-card-small uk-card-body tm-ignore-container" mu-user-view>
+                              <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
+                                <div>
+                                  <label>
+                                    <div class="uk-form-label uk-form-label-required">First Name</div>
+                                    <input class="uk-input" type="text" required name="firstName" mu-attr mu-attr-value="profile.firstName">
+                                  </label>
+                                </div>
+                                <div>
+                                  <label>
+                                    <div class="uk-form-label uk-form-label-required">Last Name</div>
+                                    <input class="uk-input" type="text" required mu-attr mu-attr-value="profile.lastName">
+                                  </label>
+                                </div>
+                                <div>
+                                  <label>
+                                    <div class="uk-form-label">Phone Number</div>
+                                    <input class="uk-input" type="tel">
+                                  </label>
+                                </div>
+                                <div>
+                                  <label>
+                                    <div class="uk-form-label">Email</div>
+                                    <input class="uk-input" type="email">
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </section>
+                        <section>
+                          <h2 class="tm-checkout-title">Shipping</h2>
+                          <div class="uk-card uk-card-default uk-card-small uk-card-body tm-ignore-container">
+                            <div class="uk-grid-small uk-grid-match uk-child-width-1-2 uk-child-width-1-2@s uk-flex-center" uk-switcher uk-grid>
+                              <div class="tm-choose">
+                                <div>
+                                  <div class="tm-choose-title">Home delivery</div>
+                                  <div class="tm-choose-description">Ships in a few days, maybe</div>
+                                </div>
+                              </div>
+                              <div class="tm-choose">
+                                <div>
+                                  <div class="tm-choose-title">Local pickup</div>
+                                  <div class="tm-choose-description">Free, if you can find it</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-switcher uk-margin">
+                              <section>
+                                <div mu-user-address onAddress="onAddress" editing="false" type="shipping"></div>
+                              </section>
+                              <section>
+                                <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
+                                  <div>
+                                    <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="warning"></span><span>Not available</span>
+                                    </p>
+                                  </div>
+                                  <div class="uk-text-small uk-text-muted">
+                                    <div class="uk-text-bolder">MuShop headquarters</div>
+                                    <div>Lanai, Hawaii 96763</div>
+                                    <div>Daily 10:00–22:00</div>
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                          </div>
+                        </section>
+                        <section>
+                          <h2 class="tm-checkout-title">Payment</h2>
+                          <div class="uk-card uk-card-default uk-card-small tm-ignore-container">
+                            <div class="uk-card-body">
+                              <div class="uk-grid-small uk-grid-match uk-child-width-1-2 uk-child-width-1-2@s uk-flex-center" uk-switcher uk-grid>
+                                <div class="tm-choose">
+                                  <div>
+                                    <div class="tm-choose-title">online by card</div>
+                                    <div class="tm-choose-description">Visa, MasterCard</div>
+                                  </div>
+                                </div>
+                                <div class="tm-choose">
+                                  <div>
+                                    <div class="tm-choose-title">electronic payment</div>
+                                    <div class="tm-choose-description">PayPal, Yandex.Money, QIWI</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="uk-switcher uk-margin">
+                                <section>
+                                  <div mu-user-payment editing="false" onCard="onCard"></div>
+                                </section>
+                                <section>
+                                  <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="warning"></span><span>Electronic payment options coming soon</span>
+                                  </p>
+                                </section>
+                              </div>
+                            </div>
+                            <div class="uk-card-footer">
+                              <div class="uk-grid-small uk-flex-middle uk-flex-center uk-text-center" uk-grid>
+                                <div class="uk-text-meta"><span class="uk-margin-xsmall-right" uk-icon="icon: lock; ratio: .75;"></span>Security of payments is <b>not really</b> provided by secure protocols
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                    <div class="uk-width-1-1 uk-width-1-4@m tm-aside-column">
+                      <div class="uk-card uk-card-default uk-card-small tm-ignore-container" uk-sticky="offset: 30; bottom: true; media: @m;">
+                        <div mu-cart onItems="onCartItems">
+                          <section class="uk-card-body" mu-if="isEmpty">
+                            <div class="uk-text-danger uk-text-center"><span class="uk-margin-small-right" uk-icon="ban"></span><span>Shopping cart is empty</span>
+                            </div><a class="uk-button uk-button-primary uk-margin-small uk-width-1-1" href="catalog.html" mu-route>Shop Products</a>
+                          </section>
+                          <div mu-if="!isEmpty">
+                            <section class="uk-card-body">
+                              <h4>Items in order</h4>
+                              <div class="uk-grid-small" uk-grid mu-each="items" mu-each-as="row">
+                                <div class="uk-width-expand">
+                                  <div class="uk-text-small" mu-html="row.product.name"></div>
+                                  <div class="uk-text-meta uk-text-xsmall"><span mu-html="row.item.quantity"></span> × $<span mu-html="row.item.rowUnitPrice"></span>
+                                  </div>
+                                </div>
+                                <div class="uk-text-right">$<span mu-html="row.item.rowTotalPrice"></span>
+                                </div>
+                              </div>
+                            </section>
+                            <section class="uk-card-body">
+                              <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand uk-text-muted">Payment</div>
+                                <div class="uk-text-right">Online by card</div>
+                              </div>
+                            </section>
+                            <section class="uk-card-body">
+                              <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand uk-text-muted">Subtotal</div>
+                                <div class="uk-text-right">$<span mu-html="totals.subtotal"></span>
+                                </div>
+                              </div>
+                              <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand uk-text-muted">Tax</div>
+                                <div>$<span mu-html="totals.tax"></span>
+                                </div>
+                              </div>
+                              <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand uk-text-muted" mu-class="{'uk-text-success': '!rawTotals.shipping'}"><span mu-if="!rawTotals.shipping">
+                                    FREE </span><span>Shipping</span></div>
+                                <div class="uk-text-right">
+                                  <div mu-if="rawTotals.shipping">$<span mu-html="totals.shipping"></span>
+                                  </div>
+                                  <s mu-if="!rawTotals.shipping">$<span mu-html="totals.shipRate"></span>
+                                  </s>
+                                </div>
+                              </div>
+                              <div class="uk-grid-small" uk-grid mu-if="rawTotals.discounts">
+                                <div class="uk-width-expand uk-text-muted">Discounts</div>
+                                <div class="uk-text-danger uk-text-right">-$<span mu-html="totals.discounts"></span>
+                                </div>
+                              </div>
+                            </section>
+                          </div>
+                          <section class="uk-card-body">
+                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                              <div class="uk-width-expand uk-text-muted">Total</div>
+                              <div class="uk-text-lead uk-text-bolder">$<span mu-html="totals.total"></span>
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                        <div class="uk-text-center">
+                          <button class="uk-button uk-button-primary uk-width-1-1" type="submit" mu-click="handleSubmit" mu-attr mu-attr-disabled="!canCheckout">Place Order</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div class="uk-section uk-section-secondary uk-section-small uk-light">
+          <div class="uk-container uk-text-muted uk-text-small">
+            <div class="uk-flex-middle" uk-grid>
+              <div class="uk-width-expand">
+                <div></div>Copyright © 2019, Oracle and/or its affiliates
+              </div>
+              <div><a class="uk-link-muted" href="#"><span class="uk-margin-xsmall-right" uk-icon="icon: receiver; ratio: .75;"></span><span class="tm-pseudo">+1 800.392.2999</span></a></div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="scripts/app-b9fa6a5709.js" defer></script>
+    <script src="scripts/charts-11308ea674.js" defer async></script>
+  </body>
+</html>
